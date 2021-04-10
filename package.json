@@ -10,7 +10,7 @@
     "pre-build": "webpack --config webpack.pre-build.config.js",
     "start": "webpack serve --config webpack.dev-server.config.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d pub"
   },
   "author": "A.Gurin",
   "license": "ISC",

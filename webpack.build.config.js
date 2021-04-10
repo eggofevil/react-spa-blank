@@ -9,7 +9,7 @@ const plugins = [
     template: `src/index.html`,
   }),
   new MiniCssExtractPlugin({
-    filename: `/css/main.css`
+    filename: `main.css`
   })
 ];
 
