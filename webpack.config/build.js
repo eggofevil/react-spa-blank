@@ -13,43 +13,26 @@ const plugins = [
   })
 ];
 
+let rules = require(`./shared-module-rules.js`);
+const buildRules = {
+  test: /\.css$/i,
+  use: [
+    MiniCssExtractPlugin.loader,
+    `css-loader`
+  ]
+};
+rules.push(buildRules);
+
 module.exports = {
   mode: `production`,
   entry: `./src/index.js`,
   plugins,
   output: {
     filename: `bundle.js`,
-    path: path.resolve(__dirname, `pub`)
+    path: path.resolve(__dirname, `../pub`)
   },
   module: {
-    rules: [
-      {
-        test: /\.html$/i,
-        loader: `html-loader`,
-        options: {
-          // Disables attributes processing
-          sources: false
-        }
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: `babel-loader`,
-        }
-      },
-      {
-        test: /\.css$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          `css-loader`
-        ]
-      },
-      {
-        test: /\.(jpg|png|woff|otf)$/i,
-        use: [`file-loader`]
-      }
-    ],
+    rules
   },
   resolve: {
     extensions: [`.js`, `.jsx`]

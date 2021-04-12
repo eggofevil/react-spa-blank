@@ -12,42 +12,26 @@ const plugins = [
   })
 ];
 
+let rules = require(`./shared-module-rules.js`);
+const preBuildRules = {
+  test: /\.css$/i,
+  use: [
+    MiniCssExtractPlugin.loader,
+    `css-loader`
+  ]
+};
+rules.push(preBuildRules);
+
 module.exports = {
   mode: `development`,
   entry: `./src/index.js`,
   plugins,
   output: {
     filename: `bundle.js`,
-    path: path.resolve(__dirname, `pre`)
+    path: path.resolve(__dirname, `../pre`)
   },
   module: {
-    rules: [
-      {
-        test: /\.html$/i,
-        loader: `html-loader`,
-        options: {
-          sources: false
-        }
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: `babel-loader`,
-        }
-      },
-      {
-        test: /\.css$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          `css-loader`
-        ]
-      },
-      {
-        test: /\.(jpg|png|woff|otf)$/i,
-        use: [`file-loader`]
-      }
-    ],
+    rules
   },
   resolve: {
     extensions: [`.js`, `.jsx`]

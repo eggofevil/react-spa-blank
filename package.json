@@ -6,9 +6,9 @@
   "scripts": {
     "eslint": "eslint --ext .jsx --ext .js src/",
     "test": "npm run eslint",
-    "build": "webpack --config webpack.build.config.js",
-    "pre-build": "webpack --config webpack.pre-build.config.js",
-    "start": "webpack serve --config webpack.dev-server.config.js",
+    "build": "webpack --config webpack.config/build.js",
+    "pre-build": "webpack --config webpack.config/prebuild.js",
+    "start": "webpack serve --config webpack.config/devserver.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d pub"
   },
