@@ -13,15 +13,25 @@ const plugins = [
   })
 ];
 
-let rules = require(`./shared-module-rules.js`);
-const buildRules = {
-  test: /\.css$/i,
-  use: [
-    MiniCssExtractPlugin.loader,
-    `css-loader`
-  ]
-};
-rules.push(buildRules);
+const sharedRules = require(`./shared-module-rules.js`);
+const buildRules = [
+  {
+    test: /\.css$/i,
+    use: [
+      MiniCssExtractPlugin.loader,
+      `css-loader`
+    ]
+  },
+  {
+    test: /\.(s[ac]ss)$/i,
+    use: [
+      MiniCssExtractPlugin.loader,
+      `css-loader`,
+      `sass-loader`
+    ]
+  }
+];
+const rules = sharedRules.concat(buildRules);
 
 module.exports = {
   mode: `production`,

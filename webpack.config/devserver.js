@@ -1,11 +1,17 @@
 const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 
-let rules = require(`./shared-module-rules.js`);
-const devServerRules = {
-  test: /\.css$/i,
-  use: [`style-loader`, `css-loader`] // the order is important !!!
-};
-rules.push(devServerRules);
+const sharedRules = require(`./shared-module-rules.js`);
+const devServerRules = [
+  {
+    test: /\.css$/i,
+    use: [`style-loader`, `css-loader`]
+  },
+  {
+    test: /\.(s[ac]ss)$/i, // sass or scss
+    use: [`style-loader`, `css-loader`, `sass-loader`] // the order is important !!!
+  }
+];
+const rules = sharedRules.concat(devServerRules);
 
 const plugins = [
   new HtmlWebpackPlugin({
