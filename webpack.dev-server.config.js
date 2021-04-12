@@ -36,7 +36,7 @@ module.exports = {
         use: [`style-loader`, `css-loader`] // the order is important !!!
       },
       {
-        test: /\.png$/i,
+        test: /\.(jpg|png|woff|otf)$/i,
         use: [`file-loader`]
       }
     ],
