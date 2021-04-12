@@ -14,7 +14,19 @@ module.exports = [
     }
   },
   {
-    test: /\.(jpg|png|woff2|woff|ttf|eot)$/i,
-    use: [`file-loader`]
+    test: /\.(jpg|png)$/i,
+    loader: `file-loader`,
+    options: {
+      outputPath: `img`,
+      name: `[name].[ext]`
+    }
+  },
+  {
+    test: /\.(woff2|woff|ttf|eot)$/i,
+    loader: `file-loader`,
+    options: {
+      outputPath: `fonts`,
+      name: `[name].[ext]`
+    }
   }
 ];
